@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noImplicitReturns": true,
+        "outDir": "./built/",
+        "sourceMap": true,
+        "strict": true,
+    },
+    "paths": {
+        "@/*": [
+            "src/*"
+        ]
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
