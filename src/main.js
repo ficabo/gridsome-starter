@@ -3,8 +3,15 @@
 
 import DefaultLayout from '~/layouts/Default.vue'
 
+import clientConfig from '@/../client-config.js'
+import imageUrlBuilder from '@sanity/image-url'
+
 export default function (Vue, { router, head, isClient }) {
   Vue.component('Layout', DefaultLayout)
+
+  Object.defineProperty(Vue.prototype, '$sanityImg', {
+    value: imageUrlBuilder({ ...clientConfig.sanity }),
+  })
 
   router.options.scrollBehavior = function (to, from, savedPosition) {
     return new Promise((resolve) => {

@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@gridsome/plugin-sitemap": "^0.4.0",
+    "@sanity/image-url": "^0.140.22",
     "gridsome": "^0.7.0",
     "gridsome-plugin-pwa": "0.0.18",
     "gridsome-plugin-robots-txt": "^1.0.2",
-    "gridsome-source-sanity": "^1.0.5"
+    "gridsome-source-sanity": "^1.0.5",
+    "sanity-blocks-vue-component": "^0.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^4.5.11",
