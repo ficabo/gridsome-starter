@@ -7,7 +7,9 @@
 const clientConfig = require('./client-config')
 
 module.exports = {
-  siteName: 'Gridsome Starter',
+  siteName: 'Ficabo - Gridsome Starter',
+  siteDescription: 'A gridsome starter for new projects, maintained by Ficabo',
+  siteUrl: 'https://www.ficabo.com.au',
   plugins: [
     {
       use: 'gridsome-plugin-typescript',
@@ -21,6 +23,46 @@ module.exports = {
         overlayDrafts: false,
         watchMode: false,
         graphqlTag: 'default',
+      },
+    },
+    {
+      use: '@gridsome/plugin-sitemap',
+      options: { include: ['/**'] },
+    },
+    {
+      use: 'gridsome-plugin-robots-txt',
+      options: {
+        policy: [
+          {
+            userAgent: '*',
+            disallow: ['/policies/*', '/admin$', '/admin/*'],
+          },
+        ],
+      },
+    },
+    {
+      use: 'gridsome-plugin-pwa',
+      options: {
+        disableServiceWorker: false,
+        serviceWorkerPath: 'service-worker.js',
+        manifestPath: 'manifest.json',
+        cachedFileTypes: 'js,json,css,html,png,jpg,jpeg,svg,gif',
+        startUrl: '/',
+        title: 'Ficabo',
+        name: 'Ficabo',
+        shortName: 'Ficabo',
+        description: 'Ficabo - Building Wonderful Solutions',
+        display: 'standalone',
+        themeColor: '#6366F1',
+        msTileColor: '#6366F1',
+        backgroundColor: '#6366F1',
+        statusBarStyle: 'default',
+        appleMobileWebAppCapable: 'yes',
+        appleMobileWebAppStatusBarStyle: 'black',
+        appleMaskIconColor: '#666600',
+        lang: 'en-AU',
+        icon: 'static/icon.png',
+        maskableIcon: true,
       },
     },
   ],
