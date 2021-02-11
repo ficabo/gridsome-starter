@@ -12,6 +12,7 @@ Maintained by [Ficabo](https://www.ficabo.com.au) for creating fast, modern, cus
 - Sanity config and various plugins supporting Sanity
 - Custom App.vue with transition on router-view for content
 - Some standard meta tags added to main.js to be updated
+- TailwindCSS installed (using gridsome plugin, postcss7 compat)
 
 ## Sanity
 
