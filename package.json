@@ -10,11 +10,15 @@
   "dependencies": {
     "@gridsome/plugin-sitemap": "^0.4.0",
     "@sanity/image-url": "^0.140.22",
+    "@tailwindcss/postcss7-compat": "^2.0.3",
+    "autoprefixer": "^9.8.6",
     "gridsome": "^0.7.0",
     "gridsome-plugin-pwa": "0.0.18",
     "gridsome-plugin-robots-txt": "^1.0.2",
     "gridsome-source-sanity": "^1.0.5",
-    "sanity-blocks-vue-component": "^0.1.0"
+    "postcss": "^7.0.35",
+    "sanity-blocks-vue-component": "^0.1.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^4.5.11",
@@ -25,7 +29,10 @@
     "eslint-plugin-gridsome": "^1.6.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.5.0",
+    "gridsome-plugin-tailwindcss": "^4.1.1",
     "gridsome-plugin-typescript": "^0.4.0",
+    "postcss-import": "^12.0.1",
+    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
     "ts-loader": "^8.0.17",
     "typescript": "^4.1.5"

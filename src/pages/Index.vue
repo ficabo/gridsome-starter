@@ -7,7 +7,7 @@
       excepturi labore tempore expedita, et iste tenetur suscipit explicabo!
       Dolores, aperiam non officia eos quod asperiores
     </p>
-    <p class="home-links">
+    <p>
       <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">
         Gridsome Docs
       </a>
@@ -29,9 +29,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.home-links a {
-  margin-right: 1rem;
-}
-</style>

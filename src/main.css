@@ -1,0 +1,9 @@
+/* 
+ * the gridsome plugin imports tailwind.css base/utilities/components. 
+ * ideally use styles/tailwind.js plugin to extend utilities, components, etc.
+ * but some global css can be specified here if easier, such as fonts and scrollbar
+*/
+
+@import 'styles/fonts.css';
+@import 'styles/scrollbar.css';
+@import 'styles/selection.css';

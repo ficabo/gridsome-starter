@@ -15,6 +15,16 @@ module.exports = {
       use: 'gridsome-plugin-typescript',
     },
     {
+      use: 'gridsome-plugin-tailwindcss',
+      options: {
+        shouldImport: true,
+        shouldTimeTravel: true,
+        presetEnvConfig: {
+          importFrom: 'src/main.css',
+        },
+      },
+    },
+    {
       use: 'gridsome-source-sanity',
       options: {
         projectId: clientConfig.sanity.projectId,

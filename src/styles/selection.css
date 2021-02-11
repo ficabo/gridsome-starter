@@ -1,0 +1,7 @@
+::-moz-selection {
+  @apply text-gray-100 bg-blue-500;
+}
+
+::selection {
+  @apply text-gray-100 bg-blue-500;
+}
