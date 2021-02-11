@@ -10,6 +10,13 @@ module.exports = {
   siteName: 'Ficabo - Gridsome Starter',
   siteDescription: 'A gridsome starter for new projects, maintained by Ficabo',
   siteUrl: 'https://www.ficabo.com.au',
+  chainWebpack: (config, { isProd, isClient }) => {
+    config.module
+      .rule('typescript')
+      .use()
+      .loader('ts-loader')
+      .options({ transpileOnly: true })
+  },
   plugins: [
     {
       use: 'gridsome-plugin-typescript',
