@@ -38,7 +38,7 @@ module.exports = {
         dataset: clientConfig.sanity.dataset,
         token: process.env.SANITY_TOKEN,
         overlayDrafts: false,
-        watchMode: false,
+        watchMode: process.env.NODE_ENV === 'production' ? false : true,
         graphqlTag: 'default',
       },
     },

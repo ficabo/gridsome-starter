@@ -3,6 +3,8 @@
 
 import '@/main.css'
 
+import '@/plugins/aos.js'
+
 import DefaultLayout from '~/layouts/Default.vue'
 
 import clientConfig from '@/../client-config.js'

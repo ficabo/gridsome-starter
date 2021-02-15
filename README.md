@@ -16,8 +16,18 @@ Maintained by [Ficabo](https://www.ficabo.com.au) for creating fast, modern, cus
 
 ## Sanity
 
+Strip out sanity information from config if using something else.
+Project will not build while expecting the .env for a Sanity project.
+
 - To add a new sanity project, use `sanity init` in project root.
 - Create .env with the project id, dataset name and access token
+
+## Other additions
+
+### Sass Loader
+
+Note: sass-loader@10 for compatability with Vue 2.x
+`npm install node-sass sass-loader@10 --save-dev`
 
 ## Ongoing improvements
 
