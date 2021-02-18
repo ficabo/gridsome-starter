@@ -15,8 +15,11 @@ query {
 </static-query>
 
 <script>
+import DefaultLayout from '@/layouts/Default.vue'
+
 export default {
   name: 'App',
+  components: { DefaultLayout },
   methods: {
     beforeEnter() {
       this.$root.$emit('scrollBeforeEnter')

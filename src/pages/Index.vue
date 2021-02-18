@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <section>
     <g-image alt="Example image" src="~/favicon.png" width="135" />
     <h1>Hello, world!</h1>
     <p>
@@ -19,7 +19,7 @@
         GitHub
       </a>
     </p>
-  </Layout>
+  </section>
 </template>
 
 <script>
