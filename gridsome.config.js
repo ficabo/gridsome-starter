@@ -4,18 +4,74 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+const TerserPlugin = require('terser-webpack-plugin')
+
 const clientConfig = require('./client-config')
 
+const isProd = process.env.NODE_ENV === 'production'
+
+/* const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin */
+
 module.exports = {
-  siteName: 'Ficabo - Gridsome Starter',
-  siteDescription: 'A gridsome starter for new projects, maintained by Ficabo',
-  siteUrl: 'https://www.ficabo.com.au',
+  siteName: clientConfig.site.name,
+  siteDescription: clientConfig.site.description,
+  siteUrl: clientConfig.site.url,
+  titleTemplate: `%s`,
+  templates: {},
   chainWebpack: (config, { isProd, isClient }) => {
     config.module
       .rule('typescript')
       .use()
       .loader('ts-loader')
       .options({ transpileOnly: true })
+    /* config
+      .plugin('BundleAnalyzerPlugin')
+      .use(BundleAnalyzerPlugin, [{ analyzerMode: 'static' }]) */
+    if (isProd && isClient) {
+      config.optimization.splitChunks({
+        chunks: 'initial',
+        maxInitialRequests: Infinity,
+        cacheGroups: {
+          vueVendor: {
+            test: /[\\/]node_modules[\\/](vue|vuex|vue-router)[\\/]/,
+            name: 'vue-vendors',
+          },
+          gridsome: {
+            test: /[\\/]node_modules[\\/](gridsome|vue-meta)[\\/]/,
+            name: 'gridsome-vendors',
+          },
+          polyfill: {
+            test: /[\\/]node_modules[\\/]core-js[\\/]/,
+            name: 'core-js',
+          },
+          icons: {
+            test: /[\\/]node_modules[\\/](@fortawesome|@vue-hero-icons)[\\/]/,
+            name: 'icon-vendors',
+          },
+        },
+      })
+    }
+  },
+  configureWebpack: {
+    optimization: {
+      minimize: true,
+      minimizer: isProd
+        ? [
+            new TerserPlugin({
+              terserOptions: {
+                warnings: false,
+                compress: {
+                  drop_console: true,
+                },
+                output: {
+                  beautify: false,
+                },
+              },
+            }),
+          ]
+        : [],
+    },
   },
   plugins: [
     {
@@ -52,34 +108,49 @@ module.exports = {
         policy: [
           {
             userAgent: '*',
-            disallow: ['/policies/*', '/admin$', '/admin/*'],
+            disallow: ['/404/', '/admin/*', '/search/', '/policies/*'],
           },
         ],
       },
     },
     {
-      use: 'gridsome-plugin-pwa',
+      use: '@allanchain/gridsome-plugin-pwa',
       options: {
-        disableServiceWorker: false,
-        serviceWorkerPath: 'service-worker.js',
         manifestPath: 'manifest.json',
-        cachedFileTypes: 'js,json,css,html,png,jpg,jpeg,svg,gif',
-        startUrl: '/',
-        title: 'Ficabo',
-        name: 'Ficabo',
-        shortName: 'Ficabo',
-        description: 'Ficabo - Building Wonderful Solutions',
-        display: 'standalone',
-        themeColor: '#6366F1',
-        msTileColor: '#6366F1',
-        backgroundColor: '#6366F1',
-        statusBarStyle: 'default',
+        manifestOptions: {
+          short_name: clientConfig.site.shortName,
+          description: clientConfig.site.shortDescription,
+          display: 'standalone',
+          gcm_sender_id: undefined,
+          start_url: '/',
+          lang: 'en-AU',
+          dir: 'auto',
+          background_color: clientConfig.site.primaryColor,
+        },
+        icon: {
+          androidChrome: {
+            url: 'static/icon-maskable.png',
+            maskable: true,
+          },
+        },
+        workboxPluginMode: 'generateSW',
+        workboxOptions: {
+          cacheId: `${clientConfig.site.shortName
+            .toLowerCase()
+            .replace(/ /g, '-')}-pwa`,
+          globPatterns: [
+            '**/*.{html,css,js}',
+            '**/*.{png,jpg,jpeg,svg,gif}',
+            'assets/data/**/*.json',
+            'flexsearch.json',
+            'manifest.json',
+          ],
+          skipWaiting: true,
+        },
+        themeColor: clientConfig.site.primaryColor,
+        msTileColor: clientConfig.site.primaryColor,
         appleMobileWebAppCapable: 'yes',
         appleMobileWebAppStatusBarStyle: 'black',
-        appleMaskIconColor: '#666600',
-        lang: 'en-AU',
-        icon: 'static/icon.png',
-        maskableIcon: true,
       },
     },
   ],

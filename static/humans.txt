@@ -1,0 +1,11 @@
+This site is built and maintained by Cameron Russell at Ficabo.
+
+/* TEAM */
+Developer: Cameron Russell.
+Site: https://www.ficabo.com.au
+Location: Sunshine Coast, Australia
+
+/* SITE */
+Language: English
+Components: Gridsome, Sanity
+IDE: Visual Studio Code

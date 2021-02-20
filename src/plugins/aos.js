@@ -9,15 +9,17 @@ class AosPlugin {
   }
 
   install(Vue) {
-    AOS.init(this.config)
+    if (process.isClient) {
+      AOS.init(this.config)
 
-    Vue.mixin({
-      updated() {
-        this.$nextTick(function () {
-          AOS.refreshHard() // This is needed to avoid the un-animate aos effect
-        })
-      },
-    })
+      Vue.mixin({
+        updated() {
+          this.$nextTick(function () {
+            AOS.refreshHard() // This is needed to avoid the un-animate aos effect
+          })
+        },
+      })
+    }
   }
 }
 

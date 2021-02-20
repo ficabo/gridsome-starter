@@ -4,6 +4,7 @@ module.exports = {
   plugins: ['gridsome'],
   env: {
     node: true,
+    browser: true,
   },
   extends: [
     'plugin:gridsome/recommended',
