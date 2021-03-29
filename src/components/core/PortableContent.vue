@@ -70,6 +70,13 @@ export default {
           extendedImage: ({ node, children }) => {
             // in the future, the node might specify height, width, blur, etc.
             // also consider processing imageOptions here as per default serializer
+            if (!node.asset.url) {
+              return (
+                <figure>
+                  <figcaption>** image not available **</figcaption>
+                </figure>
+              )
+            }
             const url = this.$sanityImg
               .image(node.asset.url)
               .auto('format')
