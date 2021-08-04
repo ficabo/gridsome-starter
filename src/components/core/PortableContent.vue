@@ -107,7 +107,7 @@ export default {
               <a
                 href={href}
                 target="_blank"
-                rel="nofollow noopener"
+                rel="noopener"
                 title={title || children}
               >
                 {children}
